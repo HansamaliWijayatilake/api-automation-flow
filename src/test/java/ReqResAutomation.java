@@ -71,4 +71,16 @@ public class ReqResAutomation {
         String nameResponse = response.getBody().path(NAME);
         Assert.assertEquals(name,nameResponse);
     }
+
+    @Test
+    public void deleteUser(){
+        RestAssured.baseURI = baseUrl;
+        RequestSpecification request = RestAssured.given();
+
+        Response response = request.contentType("application/json").delete("/api/users/"+Integer.parseInt(ID));
+
+        int statusCode = response.statusCode();
+        Assert.assertEquals(statusCode,HttpStatus.SC_NO_CONTENT);
+
+    }
 }
