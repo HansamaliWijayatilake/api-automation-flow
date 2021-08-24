@@ -30,5 +30,24 @@ public class ReqResData {
         return dataProvider;
     }
 
+    @DataProvider(name = "updateUser")
+    public Object[][] updateUserTestData() {
+
+        HelperUtils helperUtils = new HelperUtils();
+
+        Object jsonFileContents =  helperUtils.readJsonFile(TEST_DATA_PATH,UPDATE_USER_JSON_FILE,UPDATE_USER_JSON_PATH);
+        List<Object> userDetails = Arrays.asList(jsonFileContents);
+
+
+        Object[][] dataProvider = new Object[userDetails.size()][1];
+        userDetails.forEach(userObj -> {
+            JSONObject user = (JSONObject) userObj;
+            dataProvider[userDetails.indexOf(jsonFileContents)][0] = user.get("name");
+        });
+
+
+        return dataProvider;
+    }
+
 
 }

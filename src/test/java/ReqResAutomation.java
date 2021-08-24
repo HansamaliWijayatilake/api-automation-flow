@@ -1,21 +1,13 @@
-import com.jayway.jsonpath.JsonPath;
 import dataProvider.ReqResData;
 import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
-import io.restassured.response.ResponseBodyExtractionOptions;
 import io.restassured.specification.RequestSpecification;
 import org.apache.http.HttpStatus;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import static io.restassured.RestAssured.baseURI;
-import static io.restassured.RestAssured.given;
 import static utils.StringUtils.RequestParams.JOB;
 import static utils.StringUtils.RequestParams.NAME;
 import static utils.StringUtils.ResponseParams.DATA_ID;
@@ -63,17 +55,20 @@ public class ReqResAutomation {
         Assert.assertEquals(String.valueOf(id),ID);
     }
 
-    @Test
-    public void updateUser(){
+    @Test(dataProviderClass = ReqResData.class, dataProvider = "updateUser")
+    public void updateUser(String name){
         RestAssured.baseURI = baseUrl;
         RequestSpecification request = RestAssured.given();
 
-        Response response = request.contentType("application/json").put("/api/users/"+Integer.parseInt(ID));
+        JSONObject requestPayload = new JSONObject();
+        requestPayload.put(NAME, name);
+
+        Response response = request.contentType("application/json").body(requestPayload).put("/api/users/"+Integer.parseInt(ID));
 
         int statusCode = response.statusCode();
         Assert.assertEquals(statusCode,HttpStatus.SC_OK);
 
-        int id = response.getBody().path(DATA_ID);
-        Assert.assertEquals(String.valueOf(id),ID);
+        String nameResponse = response.getBody().path(NAME);
+        Assert.assertEquals(name,nameResponse);
     }
 }
