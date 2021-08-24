@@ -3,7 +3,9 @@ package dataProvider;
 import org.json.simple.JSONObject;
 import org.testng.annotations.DataProvider;
 import utils.helpers.HelperUtils;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static utils.StringUtils.TestDataParams.*;
 
@@ -14,7 +16,7 @@ public class ReqResData {
 
         HelperUtils helperUtils = new HelperUtils();
 
-        Object jsonFileContents =  helperUtils.readJsonFile(TEST_DATA_PATH,CREATE_USER_JSON_FILE,CREATE_USER_JSON_PATH);
+        Object jsonFileContents = helperUtils.readJsonFile(TEST_DATA_PATH, CREATE_USER_JSON_FILE, CREATE_USER_JSON_PATH);
         List<Object> userDetails = Arrays.asList(jsonFileContents);
 
 
@@ -35,7 +37,7 @@ public class ReqResData {
 
         HelperUtils helperUtils = new HelperUtils();
 
-        Object jsonFileContents =  helperUtils.readJsonFile(TEST_DATA_PATH,UPDATE_USER_JSON_FILE,UPDATE_USER_JSON_PATH);
+        Object jsonFileContents = helperUtils.readJsonFile(TEST_DATA_PATH, UPDATE_USER_JSON_FILE, UPDATE_USER_JSON_PATH);
         List<Object> userDetails = Arrays.asList(jsonFileContents);
 
 

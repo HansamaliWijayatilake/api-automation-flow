@@ -1,5 +1,3 @@
 {
   "create_user_01": {"name": "hansi", "job": "QA Engineer"},
-
-  "users": ["name: hansi", "job: QA Engineer", "name: rashi", "job: SE"]
 }
