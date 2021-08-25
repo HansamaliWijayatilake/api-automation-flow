@@ -1,5 +1,6 @@
 package dataProvider;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.testng.annotations.DataProvider;
 import utils.helpers.HelperUtils;
@@ -32,6 +33,25 @@ public class ReqResData {
         return dataProvider;
     }
 
+    @DataProvider(name = "addUsers")
+    public Object[][] createUsersTestData() {
+
+        HelperUtils helperUtils = new HelperUtils();
+        JSONArray jsonFileContents = helperUtils.readJsonArrayFromFile(TEST_DATA_PATH, CREATE_USER_JSON_FILE, USERS_JSON_PATH);
+        Object[][] dataProvider = new Object[jsonFileContents.size()][2];
+
+        jsonFileContents.forEach(obj -> {
+            JSONObject resultItem = (JSONObject) obj;
+            String planName = (String) resultItem.get("name");
+            String job = (String) resultItem.get("job");
+            dataProvider[jsonFileContents.indexOf(obj)][0] = planName;
+            dataProvider[jsonFileContents.indexOf(obj)][1] = job;
+
+        });
+
+        return dataProvider;
+    }
+
     @DataProvider(name = "updateUser")
     public Object[][] updateUserTestData() {
 
@@ -50,6 +70,5 @@ public class ReqResData {
 
         return dataProvider;
     }
-
 
 }

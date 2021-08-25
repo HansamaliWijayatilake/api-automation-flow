@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="ReqRes Execution">
-    <test name="Smoke Test Suite"  parallel="methods" thread-count="2">
+    <test name="Smoke Test Suite"  parallel="methods" thread-count="3">
         <classes>
             <class name="ReqResAutomation"/>
         </classes>

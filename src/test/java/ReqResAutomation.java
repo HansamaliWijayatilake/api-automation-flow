@@ -46,6 +46,30 @@ public class ReqResAutomation {
 
     }
 
+    @Test(dataProviderClass = ReqResData.class, dataProvider = "addUsers")
+    public void createUsers(String name, String job) {
+
+        RestAssured.baseURI = baseUrl;
+        RequestSpecification request = RestAssured.given();
+        JSONObject requestPayload = new JSONObject();
+        requestPayload.put(NAME, name);
+        requestPayload.put(JOB, job);
+
+        Response response = request.contentType(ContentType.JSON).body(requestPayload).post("/api/users");
+
+        ResponseBody body = response.getBody();
+
+        int statusCode = response.statusCode();
+        Assert.assertEquals(statusCode, HttpStatus.SC_CREATED);
+
+        String responseName = body.path(NAME);
+        Assert.assertEquals(responseName, name);
+
+        String responseJob = body.path(JOB);
+        Assert.assertEquals(responseJob, job);
+
+    }
+
     @Test
     public void getUser() {
         RestAssured.baseURI = baseUrl;
