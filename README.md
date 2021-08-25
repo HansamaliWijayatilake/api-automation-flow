@@ -36,3 +36,13 @@ TestNG data-providers feature passes all these values to the test case one at a 
  
 ![Success Execution](/src/evidenceImg/successExecution.png)
 
+# :parachute: Getting Started
+* Clone the project using below command
+```git
+git clone https://github.com/HansamaliWijayatilake/req-res-automation-task.git
+```
+* Resolve dependancies using the below command
+```maven
+mvn clean install
+```
+* Execute `smokeTest.xml` for test case execution :raised_hands:
