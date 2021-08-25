@@ -1,4 +1,4 @@
-import dataProvider.ReqResData;
+import data.ReqResDataProvider;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -12,17 +12,17 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-import static utils.StringUtils.QueryParams.DELAY;
-import static utils.StringUtils.RequestParams.JOB;
-import static utils.StringUtils.RequestParams.NAME;
-import static utils.StringUtils.ResponseParams.DATA_ID;
-import static utils.StringUtils.TestDataParams.ID;
+import static utils.params.QueryParams.DELAY;
+import static utils.params.RequestParams.JOB;
+import static utils.params.RequestParams.NAME;
+import static utils.params.ResponseParams.DATA_ID;
+import static utils.params.TestDataParams.ID;
 
 public class ReqResAutomation {
 
     public static final String baseUrl = "https://reqres.in";
 
-    @Test(dataProviderClass = ReqResData.class, dataProvider = "addUser")
+    @Test(dataProviderClass = ReqResDataProvider.class, dataProvider = "addUser")
     public void createUser(String name, String job) {
 
         RestAssured.baseURI = baseUrl;
@@ -46,7 +46,7 @@ public class ReqResAutomation {
 
     }
 
-    @Test(dataProviderClass = ReqResData.class, dataProvider = "addUsers")
+    @Test(dataProviderClass = ReqResDataProvider.class, dataProvider = "addUsers")
     public void createUsers(String name, String job) {
 
         RestAssured.baseURI = baseUrl;
@@ -84,7 +84,7 @@ public class ReqResAutomation {
         Assert.assertEquals(String.valueOf(id), ID);
     }
 
-    @Test(dataProviderClass = ReqResData.class, dataProvider = "updateUser")
+    @Test(dataProviderClass = ReqResDataProvider.class, dataProvider = "updateUser")
     public void updateUser(String name) {
         RestAssured.baseURI = baseUrl;
         RequestSpecification request = RestAssured.given();

@@ -1,4 +1,4 @@
-package dataProvider;
+package data;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -8,9 +8,9 @@ import utils.helpers.HelperUtils;
 import java.util.Arrays;
 import java.util.List;
 
-import static utils.StringUtils.TestDataParams.*;
+import static utils.params.TestDataParams.*;
 
-public class ReqResData {
+public class ReqResDataProvider {
 
     @DataProvider(name = "addUser")
     public Object[][] createUserTestData() {

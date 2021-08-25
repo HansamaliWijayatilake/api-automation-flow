@@ -1,4 +1,4 @@
-package utils.StringUtils;
+package utils.params;
 
 public class TestDataParams {
 
