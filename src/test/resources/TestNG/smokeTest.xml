@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="ReqRes Execution">
+    <test name="Smoke Test Suite"  parallel="methods" thread-count="2">
+        <classes>
+            <class name="ReqResAutomation"/>
+        </classes>
+    </test>
+</suite>
