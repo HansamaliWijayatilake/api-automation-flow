@@ -39,7 +39,7 @@ TestNG data-providers feature passes all these values to the test case one at a 
 # :parachute: Getting Started
 * Clone the project using below command
 ```git
-git clone https://github.com/HansamaliWijayatilake/req-res-automation-task.git
+git clone https://github.com/HansamaliWijayatilake/api-automation-flow.git
 ```
 * Resolve dependancies using the below command
 ```maven
